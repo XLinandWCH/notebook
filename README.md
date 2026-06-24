@@ -1,31 +1,36 @@
 # Notebook
 
-A simple cross-platform text editor built with Rust, inspired by Windows 11 Notepad.
+A simple terminal-based text editor built with Rust, inspired by Windows 11 Notepad.
 
 ## Features
 
-- File operations: New, Open, Save, Save As
-- Edit operations: Cut, Copy, Paste, Select All
-- View: Word Wrap toggle
-- Status bar: Line/column position, file path, modification indicator
-- About dialog
-- Keyboard shortcuts
+- File operations: New (Ctrl+N), Save (Ctrl+S), Quit (Ctrl+Q)
+- Text editing: Insert, backspace, delete, newline, tab
+- Navigation: Arrow keys, Home/End, Page Up/Down
+- Status bar: Current line/column, file path, word wrap indicator
+- Syntax highlighting for Rust code
+- Line numbers with gutter
 
 ## Keyboard Shortcuts
 
-| Shortcut | Action |
-|----------|--------|
-| Ctrl+N | New |
-| Ctrl+O | Open |
-| Ctrl+S | Save |
-| Ctrl+Shift+S | Save As |
+| Shortcut     | Action       |
+|--------------|--------------|
+| Ctrl+N       | New file     |
+| Ctrl+S       | Save         |
+| Ctrl+Q       | Quit         |
+| Ctrl+W       | Warn unsaved |
+| Left/Right   | Move cursor  |
+| Up/Down      | Move line    |
+| Home/End     | Line start/end |
+| PageUp/Down  | Page scroll  |
+| Esc          | Quit         |
 
 ## Building
 
 ### Prerequisites
 
-- Rust 1.70+ (install via [rustup.rs](https://rustup.rs))
-- A C++ compiler (for the native GUI dependencies)
+- Rust 1.70+
+- A C++ compiler
 
 ### Build
 
@@ -33,15 +38,18 @@ A simple cross-platform text editor built with Rust, inspired by Windows 11 Note
 cargo build --release
 ```
 
-The binary will be at `target/release/notebook.exe` (Windows) or `target/release/notebook` (Linux/macOS).
+The binary will be at `target/release/notebook`.
 
 ### Run
 
 ```bash
 cargo run --release
+# or open a file:
+cargo run --release /path/to/file.txt
 ```
 
 ## Technology Stack
 
-- **eframe / egui**: Cross-platform GUI framework
-- **rfd**: Native file dialogs
+- **ratatui**: Terminal UI framework
+- **crossterm**: Terminal manipulation
+- **dirs**: Home directory access
